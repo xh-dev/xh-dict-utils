@@ -78,7 +78,7 @@ class Selector:
     def pop(self):
         return self.key_and_parent()[1]
 
-    def dot_chain(self) -> list[str]:
+    def dot_chain(self) -> [str]:
         return [i for i in self.selector_str.split(".") if i != "[*]"]
     def key_and_parent(self):
         splited = self.dot_chain()
