@@ -158,12 +158,10 @@ def main():
             node_value_content = load()
             if entries.unique_result():
                 head = entries.head()
-                if type(head.value) is dict:
+                if type(head.value) is dict or type(head.value) is list:
                     if key is None:
                         raise Exception("key is empty")
                     head.value.update({key: node_value_content})
-                elif type(head.value) is list:
-                    head.value.append(node_value_content)
                 else:
                     key, _ = head.selector.key_and_parent()
                     head.parent.value.update({key: node_value_content})
