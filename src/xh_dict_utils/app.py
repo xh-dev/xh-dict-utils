@@ -3,9 +3,9 @@ import os
 import sys
 import yaml
 import json
-from Layer1AppEngine import AppEngine, CommandTemplate
-from ExtractFromFile import SupportedFormat
-from dict_utils import Entries, Selector
+from .Layer1AppEngine import AppEngine, CommandTemplate
+from .ExtractFromFile import SupportedFormat
+from .dict_utils import Entries, Selector
 
 def main():
     PROGRAM_NAME = "yaml-json-modification"
