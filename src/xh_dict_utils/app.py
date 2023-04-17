@@ -5,10 +5,10 @@ import sys
 
 import yaml
 
-from .ExtractFromFile import SupportedFormat
-from .Layer1AppEngine import AppEngine
-from .command import ToArray, CommandTemplate
-from .dict_utils import Entries, Selector
+from xh_dict_utils.ExtractFromFile import SupportedFormat
+from xh_dict_utils.Layer1AppEngine import AppEngine
+from xh_dict_utils.command import ToArray, CommandTemplate
+from xh_dict_utils.dict_utils import Entries, Selector
 
 
 def main():

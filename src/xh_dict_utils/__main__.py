@@ -1,4 +1,4 @@
-from .app import main
+from xh_dict_utils.app import main
 
 # main()
 #
