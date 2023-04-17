@@ -164,9 +164,9 @@ class Entry:
 
 
 class Entries:
-    entries: list[Entry]
+    entries: [Entry]
 
-    def __init__(self, entries: list[Entry]):
+    def __init__(self, entries: [Entry]):
         self.entries = entries
 
     def match_exact(self, selector: str) -> "Entries":

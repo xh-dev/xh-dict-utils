@@ -13,7 +13,7 @@ class CommandTemplate(ABC):
         pass
 
     @abstractmethod
-    def handleOp(self, argv: list[str]):
+    def handleOp(self, argv: [str]):
         pass
 
 
@@ -41,7 +41,7 @@ class AppEngine:
         self.handlers = dict()
 
     def regSubCommand(self, key: str, help: str, parserOp: Callable[[argparse.ArgumentParser], None],
-                      handle: Callable[[list[str]], None]):
+                      handle: Callable[[[str]], None]):
         if key not in self.subCommands:
             parser = self.subparsers.add_parser(key, help=help)
             parserOp(parser)
@@ -55,7 +55,7 @@ class AppEngine:
             self.handlers.update({key: handling})
         return
 
-    def process(self, allArgs: list[str]):
+    def process(self, allArgs: [str]):
         if len(allArgs) < 2:
             self.root_parser.print_help()
             exit(1)

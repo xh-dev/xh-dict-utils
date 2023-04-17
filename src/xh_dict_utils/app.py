@@ -23,7 +23,7 @@ def main():
         def parserOp(self, parser: argparse.ArgumentParser):
             parser.add_argument("--format", choices=["json", "yaml"], default="yaml")
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             format_type = getattr(SupportedFormat, argv.format.upper())
             if format_type == SupportedFormat.YAML:
                 d = yaml.safe_load(sys.stdin.read())
@@ -45,7 +45,7 @@ def main():
             parser.add_argument("--format", choices=["json", "yaml"], default="yaml")
             parser.add_argument("--file")
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             format = getattr(SupportedFormat, argv.format.upper())
 
             def read_all_in_file(filePath) -> str:
@@ -97,7 +97,7 @@ def main():
             parser.add_argument("--node-value-type-object", dest="node_value_type", action="store_const",
                                 const="object")
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             selector = argv.selector
 
             dict_from_pipe = argv.dict_from_pipe
@@ -184,7 +184,7 @@ def main():
         def parserOp(self, parser: argparse.ArgumentParser):
             parser.add_argument("--selector", type=str)
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             selector = argv.selector
             if Selector.from_notation(selector).is_array_group():
                 is_array_group = True
@@ -230,7 +230,7 @@ def main():
             parser.set_defaults(notation_type="notation")
             parser.set_defaults(exact=False)
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             selector = argv.selector
             if argv.notation_type == "exact":
                 findings = Entries.from_dict(yaml.safe_load(sys.stdin)).match_exact(selector)
@@ -256,7 +256,7 @@ def main():
             parser.add_argument("--format", choices=["json", "yaml"])
             parser.add_argument("--pretty", action="store_true", default=False)
 
-        def handleOp(self, argv: list[str]):
+        def handleOp(self, argv: [str]):
             class Logger(object):
                 def __init__(self, channel: list):
                     self.channels = channel
