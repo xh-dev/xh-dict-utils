@@ -172,7 +172,7 @@ def main():
             else:
                 raise Exception("multiple record result")
 
-            print(d)
+            yaml.dump(d, sys.stdout)
 
     appEngine.regSubCommandWithTemplate(UpsertNode())
 
