@@ -83,7 +83,7 @@ def main():
             parser.add_argument("--dict-from-file", type=str)
             parser.add_argument("--dict-from-pipe", action="store_true", default=False)
 
-            parser.add_argument("--key", type=str)
+            # parser.add_argument("--key", type=str)
 
             parser.add_argument("--node-value", type=str)
             parser.add_argument("--node-value-file", type=str)
@@ -105,7 +105,7 @@ def main():
             node_value_file = argv.node_value_file
             node_value = argv.node_value
             node_value_type = argv.node_value_type
-            key = argv.key
+            # key = argv.key
 
             node_value_from_pipe = True if node_value is None and node_value_file is None else False
 
@@ -158,17 +158,18 @@ def main():
             node_value_content = load()
             if entries.unique_result():
                 head = entries.head()
-                if type(head.value) is dict or type(head.value) is list:
-                    head.value = node_value_content
-                # if type(head.value) is dict:
-                #     if key is None:
-                #         raise Exception("key is empty")
-                #     head.value.update({key: node_value_content})
-                # elif type(head.value) is list:
-                #     head.value = node_value_content
+                parent = head.parent
+                key, _ = head.selector.key_and_parent()
+                entries.head_and_tail()
+                if type(parent.value) is dict:
+                    # if key is None:
+                    #     raise Exception("key is empty")
+                    parent.value.update({key: node_value_content})
+                elif type(parent.value) is list:
+                    parent.value.append(node_value_content)
                 else:
                     key, _ = head.selector.key_and_parent()
-                    head.parent.value.update({key: node_value_content})
+                    parent.value.update({key: node_value_content})
             elif entries.no_result():
                 raise Exception("no record found")
             else:
