@@ -7,7 +7,8 @@ import yaml
 
 from xh_dict_utils.ExtractFromFile import SupportedFormat
 from xh_dict_utils.Layer1AppEngine import AppEngine
-from xh_dict_utils.command import ToArray, CommandTemplate
+from xh_dict_utils.command.ToArray import *
+from xh_dict_utils.command.CommandTemplate import *
 from xh_dict_utils.dict_utils import Entries, Selector
 
 
@@ -240,7 +241,6 @@ def main():
                     {"selector": finding.selector.selector_str, "value": finding.value, "context": finding}))
 
     appEngine.regSubCommandWithTemplate(Query())
-
 
     appEngine.regSubCommandWithTemplate(ToArray)
 
