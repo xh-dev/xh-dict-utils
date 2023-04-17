@@ -242,7 +242,7 @@ def main():
 
     appEngine.regSubCommandWithTemplate(Query())
 
-    appEngine.regSubCommandWithTemplate(ToArray)
+    appEngine.regSubCommandWithTemplate(ToArray())
 
     class Output(CommandTemplate):
         def __init__(self):
