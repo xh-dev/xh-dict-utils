@@ -2,6 +2,7 @@ import argparse
 import re
 import sys
 
+import requests
 import toml
 
 if __name__ == '__main__':
@@ -24,6 +25,13 @@ if __name__ == '__main__':
     toml_data = toml.load("pyproject.toml")
 
     version_str = toml_data["project"]["version"]
+    project_name = toml_data["project"]["name"]
+
+    json_data = requests.get(f"https://pypi.org/pypi/{project_name}/json",
+                             headers={'max-age': '0'}).json()
+    print("online version: ", json_data["info"]["version"])
+
+    latest_version = json_data['info']['version']
 
     pattern = re.compile("^(\\d+)\\.(\\d+)\\.(\\d+)(-dev)?(\\+[^ ]+)?$")
     matcher = pattern.match(version_str)
