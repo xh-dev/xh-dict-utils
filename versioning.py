@@ -10,7 +10,7 @@ if __name__ == '__main__':
         description="snippet update version of python `pyproject.toml`"
     )
 
-    parser.add_argument("--version-mod", type=str, choices=["major", "minor", "patch"], default="patch", help="the mode of modification")
+    parser.add_argument("--version-mod", type=str, choices=["major", "minor", "patch"], default="", help="the mode of modification")
     parser.add_argument("--patch", dest="version_mod", action="store_const", const="patch", help="update the patch level[default option]")
     parser.add_argument("--minor", dest="version_mod", action="store_const", const="minor", help="update the minor level")
     parser.add_argument("--major", dest="version_mod", action="store_const", const="major", help="update the mjaro level")
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     toml_data = toml.load("pyproject.toml")
 
     version_str = toml_data["project"]["version"]
-    print("Existing version: ", version_str)
+
     pattern = re.compile("^(\\d+)\\.(\\d+)\\.(\\d+)(-dev)?(\\+[^ ]+)?$")
     matcher = pattern.match(version_str)
     if matcher:
@@ -43,6 +43,9 @@ if __name__ == '__main__':
                     minor=minor+1
                 elif version_mod == "patch":
                     patch=patch+1
+                else:
+                    print("Current version: ", version_str)
+                    exit()
 
                 pre_release = "dev"
                 build = 0
@@ -51,6 +54,7 @@ if __name__ == '__main__':
                 build+=1
 
             toml_data["project"]["version"] = f"{major}.{minor}.{patch}-dev+{build:03d}"
+        print("Existing version: ", version_str)
         print("New version: ", toml_data["project"]["version"])
         with open("pyproject.toml", "w") as f:
             toml.dump(toml_data, f)

@@ -1,5 +1,5 @@
 from .dict_utils import EntryType, Selector, Entry, Entries
-import ExtractFromFile
+from .ExtractFromFile import *
 from .app import main
 
 
