@@ -1,7 +1,7 @@
 import re
 from dataclasses import dataclass
 from enum import Enum
-from typing import Generator, Callable, Union
+from typing import Generator, Callable, Union, Tuple
 
 
 class EntryType(Enum):
@@ -187,7 +187,7 @@ class Entries:
     def size(self):
         return len(self.entries)
 
-    def head_and_tail(self) -> tuple[Entry, "Entries"]:
+    def head_and_tail(self) -> Tuple[Entry, "Entries"]:
         head = self.entries[0] if len(self.entries) > 0 else None
         tail = Entries(self.entries[1:] if len(self.entries) > 1 else [])
         return head, tail
