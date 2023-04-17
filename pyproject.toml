@@ -5,7 +5,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 [project]
 name = "xh-dict-utils"
-version = "0.0.0"
+version = "0.0.1"
 authors = [
   { name="xethhung", email="pypi@xethh.dev" },
 ]
