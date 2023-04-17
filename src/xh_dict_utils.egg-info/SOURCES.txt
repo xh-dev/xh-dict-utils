@@ -1,0 +1,12 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/xh_dict_utils/ExtractFromFile.py
+src/xh_dict_utils/Layer1AppEngine.py
+src/xh_dict_utils/__init__.py
+src/xh_dict_utils/dict_utils.py
+src/xh_dict_utils/test_dict_utils.py
+src/xh_dict_utils.egg-info/PKG-INFO
+src/xh_dict_utils.egg-info/SOURCES.txt
+src/xh_dict_utils.egg-info/dependency_links.txt
+src/xh_dict_utils.egg-info/top_level.txt

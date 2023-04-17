@@ -1,0 +1,23 @@
+[build-system]
+requires = [
+    "setuptools>=61.0"
+]
+build-backend = "setuptools.build_meta"
+[project]
+name = "xh-dict-utils"
+version = "0.0.0"
+authors = [
+  { name="xethhung", email="pypi@xethh.dev" },
+]
+description = "A dictionary utility of self dev py library"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/xh-dev/xh-dict-utils"
+"Bug Tracker" = "https://github.com/xh-dev/xh-dict-utils/issues"
