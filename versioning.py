@@ -4,6 +4,7 @@ import sys
 
 import requests
 import toml
+from git import Repo
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -67,7 +68,10 @@ if __name__ == '__main__':
             toml_data["project"]["version"] = f"{major}.{minor}.{patch}{pre_release_str}{build_str}"
         print("Existing version: ", version_str)
         print("New version: ", toml_data["project"]["version"])
+        local_repo = Repo(".")
         with open("pyproject.toml", "w") as f:
             toml.dump(toml_data, f)
+
+        local_repo.git.add(all=True)
     else:
         raise Exception("not match version")
