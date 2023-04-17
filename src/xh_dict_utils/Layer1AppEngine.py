@@ -1,6 +1,6 @@
 import argparse
 from abc import ABC, abstractmethod
-from typing import Callable
+from typing import Callable, List
 
 
 class CommandTemplate(ABC):
@@ -41,7 +41,7 @@ class AppEngine:
         self.handlers = dict()
 
     def regSubCommand(self, key: str, help: str, parserOp: Callable[[argparse.ArgumentParser], None],
-                      handle: Callable[[[str]], None]):
+                      handle: Callable[[List[str]], None]):
         if key not in self.subCommands:
             parser = self.subparsers.add_parser(key, help=help)
             parserOp(parser)
