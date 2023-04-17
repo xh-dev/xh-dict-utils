@@ -1,4 +1,3 @@
-import argparse
 import json
 import re
 import sys
@@ -6,7 +5,7 @@ from typing import List
 
 import yaml
 
-from command.CommandTemplate import CommandTemplate
+from command.CommandTemplate import *
 
 
 class ToArray(CommandTemplate):
