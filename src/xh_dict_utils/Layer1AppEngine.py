@@ -1,20 +1,6 @@
 import argparse
-from abc import ABC, abstractmethod
 from typing import Callable, List
 
-
-class CommandTemplate(ABC):
-    def __init__(self, name: str, help: str):
-        self.name = name
-        self.help = help
-
-    @abstractmethod
-    def parserOp(self, parser: argparse.ArgumentParser):
-        pass
-
-    @abstractmethod
-    def handleOp(self, argv: [str]):
-        pass
 
 
 class AppEngine:

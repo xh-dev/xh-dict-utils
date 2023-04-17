@@ -1,11 +1,15 @@
 import argparse
+import json
 import os
 import sys
+
 import yaml
-import json
-from .Layer1AppEngine import AppEngine, CommandTemplate
+
 from .ExtractFromFile import SupportedFormat
+from .Layer1AppEngine import AppEngine
+from .command import ToArray, CommandTemplate
 from .dict_utils import Entries, Selector
+
 
 def main():
     PROGRAM_NAME = "yaml-json-modification"
@@ -14,7 +18,6 @@ def main():
         program_name=PROGRAM_NAME,
         description=DESCRIPTION,
     )
-
 
     class LoadPipe(CommandTemplate):
         def __init__(self):
@@ -33,9 +36,7 @@ def main():
                 raise Exception("Not supported format")
             yaml.dump(d, sys.stdout)
 
-
     appEngine.regSubCommandWithTemplate(LoadPipe())
-
 
     class LoadFile(CommandTemplate):
         def __init__(self):
@@ -70,9 +71,7 @@ def main():
 
             printDict(d)
 
-
     appEngine.regSubCommandWithTemplate(LoadFile())
-
 
     class UpsertNode(CommandTemplate):
         def __init__(self):
@@ -174,7 +173,6 @@ def main():
 
             print(d)
 
-
     appEngine.regSubCommandWithTemplate(UpsertNode())
 
     class RemoveNode(CommandTemplate):
@@ -198,7 +196,6 @@ def main():
             else:
                 entries = Entries.from_dict(d).match_notation(selector)
 
-
             for entry in entries.asGenerator():
                 if entry.is_root():
                     raise Exception("Can not remove root element")
@@ -214,7 +211,6 @@ def main():
                 else:
                     raise Exception("Not support")
             print(d)
-
 
     appEngine.regSubCommandWithTemplate(RemoveNode())
 
@@ -243,9 +239,10 @@ def main():
                 print(argv.output.format_map(
                     {"selector": finding.selector.selector_str, "value": finding.value, "context": finding}))
 
-
     appEngine.regSubCommandWithTemplate(Query())
 
+
+    appEngine.regSubCommandWithTemplate(ToArray)
 
     class Output(CommandTemplate):
         def __init__(self):
@@ -289,7 +286,6 @@ def main():
                     json.dump(d, sys.stdout)
             else:
                 raise Exception("Not supported format")
-
 
     appEngine.regSubCommandWithTemplate(Output())
 
