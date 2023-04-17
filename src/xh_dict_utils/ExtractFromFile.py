@@ -1,10 +1,6 @@
-from enum import Enum
 from pathlib import Path
 
 
-class SupportedFormat(Enum):
-    JSON = "json"
-    YAML = "yaml"
 
 
 def getKey(args):
