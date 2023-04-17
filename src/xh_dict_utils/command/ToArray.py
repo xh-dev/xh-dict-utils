@@ -5,7 +5,7 @@ from typing import List
 
 import yaml
 
-from command.CommandTemplate import *
+from xh_dict_utils.command.CommandTemplate import *
 
 
 class ToArray(CommandTemplate):
