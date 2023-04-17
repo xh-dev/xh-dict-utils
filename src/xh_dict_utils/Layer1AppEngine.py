@@ -1,6 +1,7 @@
 import argparse
 from typing import Callable, List
 
+from command import CommandTemplate
 
 
 class AppEngine:
