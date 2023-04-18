@@ -1,11 +1,11 @@
+import argparse
 import json
 import re
 import sys
 from typing import List
 
 import yaml
-
-from xh_dict_utils.command.CommandTemplate import *
+from xh_dual_layer_app_engine import CommandTemplate
 
 
 class ToArray(CommandTemplate):

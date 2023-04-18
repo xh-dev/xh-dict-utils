@@ -2,8 +2,10 @@ import argparse
 import json
 import os
 import sys
+
 import yaml
-from xh_dict_utils.command.CommandTemplate import CommandTemplate
+from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
+
 from xh_dict_utils.supports.SupportedFormat import SupportedFormat
 
 

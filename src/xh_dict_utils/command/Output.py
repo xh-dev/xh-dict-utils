@@ -3,8 +3,8 @@ import json
 import sys
 
 import yaml
+from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
 
-from xh_dict_utils.command.CommandTemplate import CommandTemplate
 from xh_dict_utils.supports.Logger import Logger
 from xh_dict_utils.supports.SupportedFormat import SupportedFormat
 

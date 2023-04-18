@@ -1,9 +1,9 @@
 import argparse
 
 import yaml
+from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
 
 from xh_dict_utils import Entries
-from xh_dict_utils.command.CommandTemplate import CommandTemplate
 
 
 class Query(CommandTemplate):

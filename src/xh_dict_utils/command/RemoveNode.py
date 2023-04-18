@@ -2,8 +2,8 @@ import argparse
 import sys
 
 import yaml
+from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
 
-from xh_dict_utils.command.CommandTemplate import CommandTemplate
 from xh_dict_utils.dict_utils import Selector, Entries
 
 

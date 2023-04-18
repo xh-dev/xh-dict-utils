@@ -1,6 +1,6 @@
 import argparse
 
-from xh_dict_utils.command.CommandTemplate import CommandTemplate
+from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
 
 
 class LoadPipe(CommandTemplate):
