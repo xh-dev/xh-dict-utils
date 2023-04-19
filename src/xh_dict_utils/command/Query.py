@@ -11,7 +11,7 @@ class Query(CommandTemplate):
         super().__init__("query", "query by selector")
 
     def parserOp(self, parser: argparse.ArgumentParser):
-        parser.add_argument("--in-format", choice=["yaml", "json"], default="yaml")
+        parser.add_argument("--in-format", choices=["yaml", "json"], default="yaml")
         parser.add_argument("--in-format-json", dest="in_format", action="store_const", const="json")
         parser.add_argument("--selector", type=str)
         parser.add_argument("--output", type=str, default="{selector} -> {value}")
