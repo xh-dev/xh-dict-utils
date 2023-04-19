@@ -4,6 +4,7 @@ import yaml
 from xh_dual_layer_app_engine.CommandTemplate import CommandTemplate
 
 from xh_dict_utils import Entries
+import sys
 
 
 class Query(CommandTemplate):
@@ -26,8 +27,10 @@ class Query(CommandTemplate):
             findings = Entries.from_dict(yaml.safe_load(sys.stdin)).match_exact(selector)
         elif argv.notation_type == "regex":
             findings = Entries.from_dict(yaml.safe_load(sys.stdin)).match_regex(selector)
-        if argv.notation_type == "notation":
+        elif argv.notation_type == "notation":
             findings = Entries.from_dict(yaml.safe_load(sys.stdin)).match_notation(selector)
+        else:
+            raise Exception(f"Notation type[{argv.notation_type}] not supported")
 
         for finding in findings.asGenerator():
             print(argv.output.format_map(
