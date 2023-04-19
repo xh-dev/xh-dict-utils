@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xh-dict-utils"
-version = "0.0.26"
+version = "0.0.27"
 description = "A dictionary utility of self dev py library"
 readme = "README.md"
 requires-python = ">=3.6"
 classifiers = [ "Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent",]
+dependencies = [ "PyYAML==6.0", "GitPython==3.1.31",]
 [[project.authors]]
 name = "xethhung"
 email = "pypi@xethh.dev"
